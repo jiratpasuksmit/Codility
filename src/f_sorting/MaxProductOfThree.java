@@ -1,10 +1,10 @@
-package e_prefixSums;
+package f_sorting;
 
 import utils.Util;
 
 import java.util.Arrays;
 
-public class CountDiv {
+public class MaxProductOfThree {
     public static void main(String[] args) {
         Util.printResult(solution(11, 345, 17), 20);
         Util.printResult(solution(6, 11, 2), 3);

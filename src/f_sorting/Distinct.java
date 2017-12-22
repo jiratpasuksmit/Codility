@@ -1,39 +1,18 @@
-package e_prefixSums;
+package f_sorting;
 
 import utils.Util;
 
 import java.util.Arrays;
 
-public class CountDiv {
+public class Distinct {
     public static void main(String[] args) {
-        Util.printResult(solution(11, 345, 17), 20);
-        Util.printResult(solution(6, 11, 2), 3);
-        Util.printResult(solution(6, 12, 2), 4);
-        Util.printResult(solution(1, 5, 2), 2);
-        Util.printResult(solution(1, 6, 2), 3);
-
-        Util.printResult(solution(6, 11, 3), 2);
-        Util.printResult(solution(6, 12, 3), 3);
-        Util.printResult(solution(1, 5, 3), 1);
-        Util.printResult(solution(1, 6, 3), 2);
+        Util.printResult(solution(new int[]{-3, 1, 2, -2, 5, 6}), 60);
+        Util.printResult(solution(new int[]{-5, 5, -5, 4}), 125);
     }
 
-    public static int solution(int A, int B, int K) {
-        return (B - A) / K + (A % K != 0 ? 1 : 0) + 1;
-
-
-//        if(B < K) {
-//            return 0;
-//        }
-//
-//        int num1 = A / K;
-//        if(A % K != 0) {
-//            num1++;
-//        }
-//
-//        int num2 = B / K;
-//
-//        return num2 - num1 + 1;
+    public static int solution(int[] A) {
+        Arrays.sort(A);
+        return Math.max(A[A.length - 1] * A[A.length-2] * A[A.length-3], A[0] * A[1] * A[A.length - 1]);
     }
 
 }
