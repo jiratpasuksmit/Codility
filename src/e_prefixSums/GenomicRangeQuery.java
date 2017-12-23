@@ -2,47 +2,45 @@ package e_prefixSums;
 
 import utils.Util;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class GenomicRangeQuery {
     public static void main(String[] args) {
-        Util.printResult(solution(new int[]{1, 3, 6, 4, 1, 2}), 5);
-        Util.printResult(solution(new int[]{1, 2, 3}), 4);
-        Util.printResult(solution(new int[]{-1, -3}), 1);
-        Util.printResult(solution(new int[]{}), 1);
-        Util.printResult(solution(new int[]{0}), 1);
-        Util.printResult(solution(new int[]{1, 2, 5}), 3);
-        Util.printResult(solution(new int[]{2}), 1);
+        Util.printResult(solution("CAGCCTA", new int[]{2, 5, 0}, new int[]{4, 5, 6}), new int[]{2,4,1});
     }
 
-    public static int solution(int[] A) {
-        if (A.length == 0) {
-            return 1;
+    public static int[] solution(String S, int[] P, int[] Q) {
+        List<Integer> ans = new ArrayList<>();
+
+        for (int i = 0; i < P.length; i++) {
+            int pScore = getImpactScore(S.charAt(P[i]));
+            int qScore = getImpactScore(S.charAt(Q[i]));
+            ans.add(Math.min(pScore, qScore));
         }
 
-        Arrays.sort(A);
-        if (A[A.length - 1] <= 0) {
-            return 1;
+        int[] intArray = new int[ans.size()];
+        for (int i = 0; i < ans.size(); i++) {
+            intArray[i] = ans.get(i);
         }
 
-        boolean firstPositiveFound = false;
-        for (int i = 0; i < A.length; i++) {
+        return intArray;
+    }
 
-            if (!firstPositiveFound && A[i] > 0) {
-                firstPositiveFound = true;
-                if (A[i] != 1) {
-                    return 1;
-                }
-            }
-
-            if (firstPositiveFound &&
-                    i < A.length - 1 &&
-                    !(A[i + 1] - 1 == A[i] || A[i + 1] == A[i])) {
-                return A[i] + 1;
-            }
+    public static int getImpactScore(char c) {
+        switch (c) {
+            case 'A':
+                return 1;
+            case 'C':
+                return 2;
+            case 'G':
+                return 3;
+            case 'T':
+                return 4;
+            default:
+                return -1;
         }
-
-        return A[A.length - 1] + 1;
     }
 
 }

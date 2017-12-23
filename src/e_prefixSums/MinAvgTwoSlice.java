@@ -6,43 +6,26 @@ import java.util.Arrays;
 
 public class MinAvgTwoSlice {
     public static void main(String[] args) {
-        Util.printResult(solution(new int[]{1, 3, 6, 4, 1, 2}), 5);
-        Util.printResult(solution(new int[]{1, 2, 3}), 4);
-        Util.printResult(solution(new int[]{-1, -3}), 1);
-        Util.printResult(solution(new int[]{}), 1);
-        Util.printResult(solution(new int[]{0}), 1);
-        Util.printResult(solution(new int[]{1, 2, 5}), 3);
-        Util.printResult(solution(new int[]{2}), 1);
+        Util.printResult(solution(new int[]{4, 2, 2, 5, 1, 5, 8}), 1);
+        Util.printResult(solution(new int[]{-3, -5, -8, -4, -10}), 2);
     }
 
     public static int solution(int[] A) {
-        if (A.length == 0) {
-            return 1;
-        }
-
-        Arrays.sort(A);
-        if (A[A.length - 1] <= 0) {
-            return 1;
-        }
-
-        boolean firstPositiveFound = false;
-        for (int i = 0; i < A.length; i++) {
-
-            if (!firstPositiveFound && A[i] > 0) {
-                firstPositiveFound = true;
-                if (A[i] != 1) {
-                    return 1;
+        int lastP = 0;
+        double minAvg = Integer.MAX_VALUE;
+        for (int i = 0; i < A.length - 1; i++) {
+            int sum = A[i];
+            for (int j = i + 1; j < A.length; j++) {
+                sum += A[j];
+                double newAvg = sum / (j - i + 1.0);
+                if (newAvg < minAvg) {
+                    minAvg = newAvg;
+                    lastP = i;
                 }
             }
-
-            if (firstPositiveFound &&
-                    i < A.length - 1 &&
-                    !(A[i + 1] - 1 == A[i] || A[i + 1] == A[i])) {
-                return A[i] + 1;
-            }
         }
 
-        return A[A.length - 1] + 1;
+        return lastP;
     }
 
 }
