@@ -34,7 +34,7 @@ public class EquiLeader {
             if (A[i] == temp) {
                 count++;
             }
-        }
+        } 
 
         int leader = -1;
         if (count > A.length / 2) {
