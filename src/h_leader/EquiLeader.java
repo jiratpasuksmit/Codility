@@ -32,9 +32,9 @@ public class EquiLeader {
         int count = 0;
         for (int i = 0; i < A.length; i++) {
             if (A[i] == temp) {
-                count++;
+                count++; 
             }
-        } 
+        }
 
         int leader = -1;
         if (count > A.length / 2) {
