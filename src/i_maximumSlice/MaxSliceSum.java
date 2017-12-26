@@ -1,9 +1,9 @@
-package h_leader;
+package i_maximumSlice;
 
 
 import utils.Util;
 
-public class EquiLeader {
+public class MaxSliceSum {
     public static void main(String[] args) {
         Util.printResult(solution(new int[]{4, 3, 4, 4, 4, 2}), 2);
         Util.printResult(solution(new int[]{1, 0, 1, 0, 1, 0}), 0);
