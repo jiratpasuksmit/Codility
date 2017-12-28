@@ -16,7 +16,20 @@ public class Util {
         return s.toString();
     }
 
+    public static int[] getRandomArrayInt(int maxValue, int length) {
+        int result[] = new int[length];
+        for (int i = 0; i < result.length - 1; i++) {
+            result[i] = (int)(Math.random() * maxValue);
+        }
+        result[result.length-1] = maxValue;
+        return result;
+    }
+
     public static void printResult(int input, int expected) {
+        System.out.println("guess " + input + " / result " + expected + " :: " + (input == expected));
+    }
+
+    public static void printResult(boolean input, boolean expected) {
         System.out.println("guess " + input + " / result " + expected + " :: " + (input == expected));
     }
 
@@ -28,4 +41,5 @@ public class Util {
         boolean correct = Arrays.stream(expected).anyMatch(value -> value == input);
         System.out.println("guess " + input + " / result " + getArrayString(expected) + " :: " + correct);
     }
+
 }

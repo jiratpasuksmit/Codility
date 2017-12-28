@@ -1,9 +1,9 @@
 package _a;
 
 public class ReversingCoins {
-    public static void main(String[]args) {
-        System.out.println(solution(10));
-    }
+//    public static void main(String[]args) {
+//        System.out.println(solution(10));
+//    }
 
 //    def coins(n): result = 0
 //        coin=[0]*(n+1)
