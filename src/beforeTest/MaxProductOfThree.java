@@ -1,4 +1,4 @@
-package f_sorting;
+package beforeTest;
 
 import utils.Util;
 
@@ -10,6 +10,7 @@ public class MaxProductOfThree {
         Util.printResult(solution(new int[]{-3,-2,-1,0,1,2}), 12);
         Util.printResult(solution(new int[]{-3,-2,-1,1,2}), 12);
     }
+
     public static int solution(int[] A) {
         Arrays.sort(A);
         int maxA = A[A.length - 1];
@@ -24,5 +25,4 @@ public class MaxProductOfThree {
 
         return Math.max(a,b);
     }
-
 }
